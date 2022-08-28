@@ -30,7 +30,7 @@ export async function getMeApi(token){
         const url = `${BASE_API}/api/auth/me/`;
         const params = {
             headers: {
-                Authorization:`Bearer ${localStorage.getItem('token')}`
+                Authorization:`Bearer ${token}`
             }
         }
 
@@ -38,7 +38,7 @@ export async function getMeApi(token){
 
         // console.log("Context login--->",url)
         // console.log("Context login--->",params)
-        // console.log("Context login--->",token)
+        console.log("Context login--->"+token)
 
         const response  = await fetch(url,params);
         const result = await response.json();
@@ -53,7 +53,7 @@ export async function getUsersApi(token){
         const url = `${BASE_API}/api/users/`;
         const params = {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: 'Bearer '+token
             }
         }
         const response = await fetch(url,params);

@@ -1,13 +1,11 @@
-from users.api.serializers import userSerializer
-from users.models import User
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from django.contrib.auth.hashers import make_password
 
-from rest_framework import permissions
-permission_classes = [permissions.AllowAny]
+from users.models import User
+from users.api.serializers import userSerializer
 
 
 class userApiViewSet(ModelViewSet):

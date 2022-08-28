@@ -18,6 +18,7 @@ export function AuthProvider(props) {
             const token= getToken();
             if(token){
                 const me = await getMe(token)
+                console.log(me)
                 setAuth({token,me})
             }else{
                 setAuth(null)
