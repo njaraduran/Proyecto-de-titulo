@@ -24,11 +24,13 @@ export function TableUsers(props) {
             <Table.Cell>{user.email}</Table.Cell>
             <Table.Cell>{user.first_name}</Table.Cell>
             <Table.Cell>{user.last_name}</Table.Cell>
-            <Table.Cell>
+            <Table.Cell className='status'>
               {user.is_active ? <Icon name='check'/>:<Icon name='close'/>}
             </Table.Cell>
-            <Table.Cell>Activo</Table.Cell>
-            <Table.Cell>boton</Table.Cell>
+            <Table.Cell className='status'>
+            {user.is_staff ? <Icon name='check'/>:<Icon name='close'/>}
+            </Table.Cell>
+            <Actions />
           </Table.Row>
         ))}
       </Table.Body>
@@ -36,4 +38,14 @@ export function TableUsers(props) {
 
 
   )
+}
+
+function Actions(){
+  return (
+  <Table.Cell textAlign='right'>
+    <Button icon onClick={()=> console.log("Click 1")}>
+      <Icon name='pencil'/>
+    </Button>
+  </Table.Cell>
+  );
 }
