@@ -15,7 +15,7 @@ export function UsersAdmin() {
   const openCloseModal =() => setShowModal((prev) => !prev);//sirve para abrir y cerrar popups
 
   const addUser =()=>{
-    setTitleModal("hola1");
+    setTitleModal("Crear Usuario");
     setContentModal(<AddEditUserform />);
     openCloseModal();
   };
