@@ -30,7 +30,7 @@ export function TableUsers(props) {
             <Table.Cell className='status'>
             {user.is_staff ? <Icon name='check'/>:<Icon name='close'/>}
             </Table.Cell>
-            <Actions />
+            <Actions user = {user}/>
           </Table.Row>
         ))}
       </Table.Body>
@@ -40,11 +40,16 @@ export function TableUsers(props) {
   )
 }
 
-function Actions(){
+function Actions(props){
+  const {user} = props;
+
   return (
   <Table.Cell textAlign='right'>
     <Button icon onClick={()=> console.log("Click 1")}>
       <Icon name='pencil'/>
+    </Button>
+    <Button icon negative onClick={()=> console.log(`Eliminar ${user.email}`)}>
+      <Icon name='close'/>
     </Button>
   </Table.Cell>
   );

@@ -38,7 +38,7 @@ export async function getMeApi(token){
 
         // console.log("Context login--->",url)
         // console.log("Context login--->",params)
-        console.log("Context login--->"+token)
+        // console.log("Context login--->"+token)
 
         const response  = await fetch(url,params);
         const result = await response.json();

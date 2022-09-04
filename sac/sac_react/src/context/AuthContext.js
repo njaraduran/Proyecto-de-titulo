@@ -18,19 +18,16 @@ export function AuthProvider(props) {
             const token= getToken();
             if(token){
                 const me = await getMe(token)
-                console.log(me)
                 setAuth({token,me})
             }else{
                 setAuth(null)
             }
-
-
         })();
     },[]);
+    
 
     const login = async(token) =>{
-        console.log("Context login--->",token)
-
+        
         setToken(token);
         const me = await getMe(token);
         setAuth({token,me});
