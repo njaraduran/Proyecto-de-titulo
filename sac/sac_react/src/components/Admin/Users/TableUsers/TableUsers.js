@@ -4,7 +4,7 @@ import {map} from "lodash";
 import "./TableUsers.scss"
 
 export function TableUsers(props) {
-  const {users} = props;
+  const {users,updateUser,onDeleteUser} = props;
   return (
     <Table className = "table-users-admin">
       <Table.Header>
@@ -12,6 +12,7 @@ export function TableUsers(props) {
         <Table.HeaderCell>Correo</Table.HeaderCell>
         <Table.HeaderCell>Nombre</Table.HeaderCell>
         <Table.HeaderCell>Apellido</Table.HeaderCell>
+        <Table.HeaderCell>Cargo</Table.HeaderCell>
         <Table.HeaderCell>Activo</Table.HeaderCell>
         <Table.HeaderCell>Admin</Table.HeaderCell>
         <Table.HeaderCell></Table.HeaderCell>
@@ -24,13 +25,14 @@ export function TableUsers(props) {
             <Table.Cell>{user.email}</Table.Cell>
             <Table.Cell>{user.first_name}</Table.Cell>
             <Table.Cell>{user.last_name}</Table.Cell>
+            <Table.Cell>{user.cargo}</Table.Cell>
             <Table.Cell className='status'>
               {user.is_active ? <Icon name='check'/>:<Icon name='close'/>}
             </Table.Cell>
             <Table.Cell className='status'>
             {user.is_staff ? <Icon name='check'/>:<Icon name='close'/>}
             </Table.Cell>
-            <Actions user = {user}/>
+            <Actions user = {user} updateUser={updateUser} onDeleteUser = {onDeleteUser}/>
           </Table.Row>
         ))}
       </Table.Body>
@@ -41,14 +43,14 @@ export function TableUsers(props) {
 }
 
 function Actions(props){
-  const {user} = props;
+  const {user,updateUser,onDeleteUser} = props;
 
   return (
   <Table.Cell textAlign='right'>
-    <Button icon onClick={()=> console.log("Click 1")}>
+    <Button icon onClick={()=> updateUser(user)}>
       <Icon name='pencil'/>
     </Button>
-    <Button icon negative onClick={()=> console.log(`Eliminar ${user.email}`)}>
+    <Button icon negative onClick={()=> onDeleteUser(user)}>
       <Icon name='close'/>
     </Button>
   </Table.Cell>

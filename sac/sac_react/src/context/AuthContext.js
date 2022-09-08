@@ -24,6 +24,8 @@ export function AuthProvider(props) {
             }
         })();
     },[]);
+
+    
     
 
     const login = async(token) =>{
