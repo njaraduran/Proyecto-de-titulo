@@ -19,7 +19,7 @@ export function LoginForm() {
         const response = await loginApi(formValue);
         const {access} = response;
         login(access);
-        console.log(access);
+        // console.log(access);
       }catch(error){
         toast.error(error.message)
       }

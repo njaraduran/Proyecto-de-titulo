@@ -149,5 +149,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 SIMPLE_JWT = {
-    'ACCES_TOKE_LIFETIME': datetime.timedelta(days=120)
+    'ACCES_TOKEN_LIFETIME': datetime.timedelta(days=120)
 }

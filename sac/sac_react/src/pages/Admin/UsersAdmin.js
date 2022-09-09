@@ -13,9 +13,10 @@ export function UsersAdmin() {
   const {loading,users,getUsers,deleteUser} = useUser();
 
   useEffect(() =>  getUsers() , [refetch]);
-  const onReFetch = () => setRefech((prev)=>!prev);
   
   const openCloseModal =() => setShowModal((prev) => !prev);//sirve para abrir y cerrar popups
+  const onReFetch = () => setRefech((prev)=>!prev);
+  
 
   const addUser =()=>{
     setTitleModal("Crear Usuario");

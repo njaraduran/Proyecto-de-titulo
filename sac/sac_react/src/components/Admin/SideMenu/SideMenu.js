@@ -24,8 +24,29 @@ function MenuLeft(props){
             <Menu.Item as={Link} to={'/admin'} active={pathname === '/admin'}>
                 <Icon name='home' />Menu
             </Menu.Item>
+
+            {auth.me?.is_staff && (
+
+
+                <Menu.Item as={Link} to={'/admin/documentos'} active={pathname === '/admin/documentos'}>
+                <Icon name='users' />Expedientes
+            </Menu.Item>            
+
+            )}
+
+            {auth.me?.is_staff && (
+    
+
+                <Menu.Item as={Link} to={'/admin/expedientes'} active={pathname === '/admin/expedientes'}>
+                <Icon name='users' />Expedientes
+            </Menu.Item>            
+
+            )}
+
+                
             
             {auth.me?.is_staff && (
+    
 
             <Menu.Item as={Link} to={'/admin/users'} active={pathname === '/admin/users'}>
                 <Icon name='users' />Usuarios

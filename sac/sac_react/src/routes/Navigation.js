@@ -5,7 +5,7 @@ import routes from "./routes";
 
 export function Navigation() {
 
-  console.log('routes -->',routes);
+  // console.log('routes -->',routes);
 
   return (
     <BrowserRouter>

@@ -5,7 +5,7 @@ import {useUser} from "../hooks";
 export const AuthContext = createContext({
     auth: undefined,
     login: () => null,
-    logout: () => null
+    logout: () => null,
 });
 
 export function AuthProvider(props) {
@@ -17,13 +17,13 @@ export function AuthProvider(props) {
         (async()=>{
             const token= getToken();
             if(token){
-                const me = await getMe(token)
-                setAuth({token,me})
+                const me = await getMe(token);
+                setAuth({token,me});
             }else{
-                setAuth(null)
+                setAuth(null);
             }
         })();
-    },[]);
+    },[setAuth]);
 
     
     
@@ -36,8 +36,8 @@ export function AuthProvider(props) {
     };
 
     const logout = () =>{
-        removeToken();
         if(auth){
+            removeToken();
             setAuth(null)
         }
     }
