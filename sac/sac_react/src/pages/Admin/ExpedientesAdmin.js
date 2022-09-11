@@ -1,4 +1,3 @@
-import { initial } from 'lodash';
 import React, { useState,useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
 import {AddEditExpedienteForm, HeaderPage,TableExpedienteAdmin} from "../../components/Admin";

@@ -8,10 +8,10 @@ export function SideMenu(props) {
     const {children} = props;
     const {pathname} = useLocation();
     return (
-    <div className='side-menu-admin'>
-        <MenuLeft pathname={pathname}/>
-        <div className='content'>{children}</div>
-    </div>
+        <div className='side-menu-admin'>
+            <MenuLeft pathname={pathname}/>
+            <div className='content'>{children}</div>
+        </div>
     );
 }
 

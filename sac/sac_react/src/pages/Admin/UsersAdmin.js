@@ -4,8 +4,6 @@ import { HeaderPage,TableUsersAdmin,AddEditUserform } from '../../components/Adm
 import {ModalBasic} from "../../components/Common";
 import {useUser} from "../../hooks";
 
-
-
 export function UsersAdmin() {
   const [showModal,setShowModal] = useState(false);
   const [titleModal,setTitleModal] = useState(null);

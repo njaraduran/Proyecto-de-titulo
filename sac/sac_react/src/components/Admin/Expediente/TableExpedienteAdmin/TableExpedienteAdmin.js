@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table,Image,Button,Icon} from "semantic-ui-react"
+import {Table,Button,Icon} from "semantic-ui-react"
 import { map } from 'lodash';
 import "./TableExpedienteAdmin.scss"
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form,Button,Checkbox} from "semantic-ui-react";
-import {useFormik, yupToFormErrors} from "formik";
+import {useFormik} from "formik";
 import * as Yup from "yup";
 import {useUser} from "../../../../hooks";
 import "./AddEditUserform.scss";

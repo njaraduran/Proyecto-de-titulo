@@ -1,5 +1,5 @@
 import React from 'react'
-import {Form,Image,Button} from "semantic-ui-react"
+import {Form,Button} from "semantic-ui-react"
 import {useFormik} from "formik"
 import * as Yup from "yup"
 import {useExpediente} from "../../../../hooks"

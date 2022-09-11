@@ -53,9 +53,9 @@ export async function getUsersApi(token){
         const url = `${BASE_API}/api/users/`;
         const params = {
             headers: {
-                Authorization: 'Bearer '+token
-            }
-        }
+                Authorization: `Bearer ${token}`,
+            },
+        };
         const response = await fetch(url,params);
         const result = await response.json();
         return result;
