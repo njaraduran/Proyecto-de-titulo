@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {getExpedientesApi,addExpedienteApi} from "../api/expediente"
+import {getExpedientesApi,addExpedienteApi,updateExpedienteApi,deleteExpedienteApi} from "../api/expediente"
 import {useAuth} from "./"
 
 export function useExpediente(){
@@ -30,12 +30,39 @@ export function useExpediente(){
             setError(error)
         }
     }
+    
+
+    const updateExpediente = async (id,data) =>{
+        try {
+            setLoading(true);
+            await updateExpedienteApi(id,data,auth.token);
+            setLoading(false);
+        } catch (error) {
+            setLoading(false);
+            setError(error)
+        }
+    }
+
+    
+
+    const deleteExpediente = async (id)=>{
+        try {
+            setLoading(true);
+            await deleteExpedienteApi(id,auth.token)
+            setLoading(false)
+        } catch (error) {
+            setLoading(false);
+            setError(error)
+        }
+    }
 
     return{
         loading,
         error,
         expedientes,
         getExpedientes,
-        addExpediente
+        addExpediente,
+        updateExpediente,
+        deleteExpediente
     }
 }

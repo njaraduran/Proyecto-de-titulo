@@ -5,17 +5,22 @@ import * as Yup from "yup"
 import {useExpediente} from "../../../../hooks"
 import "./AddEditExpedienteForm.scss"
 
-export function AddEditExpedienteForm() {
+export function AddEditExpedienteForm(props) {
 
-  const {addExpediente} = useExpediente();
+  const {onClose,onRefecth,expediente} = props;
+  console.log(expediente)
+  const {addExpediente,updateExpediente} = useExpediente();
 
   const formik = useFormik({
-    initialValues: initialValues(),
-    validationSchema: Yup.object(newSchema()),
+    initialValues: initialValues(expediente),
+    validationSchema: Yup.object(expediente?updateSchema(): newSchema()),
     validateOnChange: false,
     onSubmit: async(formValue)=>{
       try {
-        await addExpediente(formValue);
+        if (expediente) await updateExpediente(expediente.id,formValue)
+        else await addExpediente(formValue);
+        onRefecth();
+        onClose();
       } catch (error) {
         console.error(error)
       }
@@ -25,6 +30,7 @@ export function AddEditExpedienteForm() {
   return (
     <Form className='add-edit-expediente-form' onSubmit={formik.handleSubmit}>
         <Form.Input 
+          label='Nombre del Proyecto' 
           name = 'title' 
           placeholder = "Nombre del expediente" 
           value = {formik.values.title}
@@ -33,6 +39,7 @@ export function AddEditExpedienteForm() {
         />      
         <Form.Group widths='equal'>
           <Form.Input 
+            label='Inspector Técnico' 
             name = 'asignTo' 
             placeholder = "Encargado"
             value = {formik.values.asignTo}
@@ -40,6 +47,7 @@ export function AddEditExpedienteForm() {
             error={formik.errors.asignTo}
           />  
           <Form.Input 
+            label='Contratista' 
             name = 'contratist' 
             placeholder = "Empresa Contratista"
             value = {formik.values.contratist}
@@ -50,6 +58,7 @@ export function AddEditExpedienteForm() {
    
         <Form.Group widths='equal'>          
           <Form.Input 
+            label = "Estapa"
             name = 'stage' 
             placeholder = "Etapa"
             value = {formik.values.stage}
@@ -57,6 +66,7 @@ export function AddEditExpedienteForm() {
             error={formik.errors.stage}
           />
           <Form.Input 
+            label = "Estado"
             name = 'state' 
             placeholder = "Estado"
             value = {formik.values.state}
@@ -65,7 +75,7 @@ export function AddEditExpedienteForm() {
           />
         </Form.Group>
 
-        {/* <Form.Group widths='equal'>
+        <Form.Group widths='equal'>
           <Form.Input type ='date' 
             label='Fecha de Inicio obra' 
             name = 'dateStart' 
@@ -82,7 +92,7 @@ export function AddEditExpedienteForm() {
             onChange = {formik.handleChange}
             error={formik.errors.dateEnd}
           />
-        </Form.Group> */}
+        </Form.Group>
         <Form.TextArea 
           name = 'description' 
           label='Descripción' 
@@ -95,18 +105,31 @@ export function AddEditExpedienteForm() {
             Subir Archivo
         </Button> */}
 
-        <Button type='submit' primary fluid content="Crear" />
+        <Button type='submit' primary fluid content={expediente ? "Actualizar" : "Crear"} />
     </Form>
   )
 }
 
-function initialValues(){
+function initialValues(data){
   return{
-    title: "",
+    title: data?.title || "",
+    asignTo: data?.asignTo || "",
+    contratist: data?.contratist || "",
+    stage: data?.stage || "",
+    state: data?.state || "",
+    dateStart: data?.dateStart || "",
+    dateEnd: data?.dateEnd || "",
+    description: data?.description || "",
   }
 }
 
 function newSchema(){
+  return {
+    title: Yup.string().required(true)
+  }
+}
+
+function updateSchema(){
   return {
     title: Yup.string().required(true)
   }

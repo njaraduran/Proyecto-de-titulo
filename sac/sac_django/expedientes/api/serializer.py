@@ -6,4 +6,4 @@ class ExpedienteSerializer(ModelSerializer):
     class Meta:
         model = expediente
         fields = ['id', 'title', 'asignTo', 'contratist',
-                  'stage', 'state', 'description']
+                  'stage', 'state', 'description', 'dateStart', 'dateEnd']

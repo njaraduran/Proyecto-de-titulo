@@ -1,3 +1,4 @@
+import { initial } from 'lodash';
 import React, { useState,useEffect } from 'react';
 import { Loader } from 'semantic-ui-react';
 import {AddEditExpedienteForm, HeaderPage,TableExpedienteAdmin} from "../../components/Admin";
@@ -8,16 +9,40 @@ export  function ExpedientesAdmin() {
   const [showModal, setShowModal] = useState(false)
   const [titleModal, setTitleModal] = useState(null)
   const [contentModal, setcontentModal] = useState(null)
-  const {loading,expedientes,getExpedientes} = useExpediente();
+  const [refetch, setRefetch] = useState(false)
+  const {loading,expedientes,getExpedientes,deleteExpediente} = useExpediente();
 
-  useEffect(()=>getExpedientes(),[])
+  useEffect(()=>getExpedientes(),[refetch]);
 
   const openCloseModal = () => setShowModal(prev=>!prev)
+  const onRefecth = () =>setRefetch((prev)=>!prev)
+
 
   const AddExpediente = () => {
     setTitleModal("Nuevo Expediente");
-    setcontentModal(<AddEditExpedienteForm />)
+    setcontentModal(<AddEditExpedienteForm onClose={openCloseModal} onRefecth={onRefecth} />)
     openCloseModal()
+  }
+
+  const updateExpediente = (data) =>{
+    setTitleModal("Actualizar Expediente")
+    setcontentModal(
+      <AddEditExpedienteForm onClose={openCloseModal} onRefecth={onRefecth} expediente={data}/>
+    )
+    openCloseModal();
+  }
+
+  const onDeleteExpediente= async(data) =>{
+    const result = window.confirm(`¿Eliminar Expediente ${data.title}?`)
+
+    if (result){
+      try {
+        await deleteExpediente(data.id);
+        onRefecth();        
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 
   return (
@@ -30,6 +55,8 @@ export  function ExpedientesAdmin() {
     ):(
       <TableExpedienteAdmin
         expedientes = {expedientes}
+        updateExpediente = {updateExpediente}
+        deleteExpediente = {onDeleteExpediente}
       />
     )}
 

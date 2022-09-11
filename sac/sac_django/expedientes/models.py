@@ -1,5 +1,5 @@
 from django.db import models
-import datetime
+from datetime import datetime
 
 
 class expediente(models.Model):
@@ -10,3 +10,5 @@ class expediente(models.Model):
     stage = models.CharField(default=' ', max_length=100)
     state = models.CharField(default=' ', max_length=100)
     description = models.CharField(default=' ', max_length=100)
+    dateStart = models.DateField(default=datetime.today().strftime('%d-%m-%Y'))
+    dateEnd = models.DateField(default=datetime.today().strftime('%d-%m-%Y'))
