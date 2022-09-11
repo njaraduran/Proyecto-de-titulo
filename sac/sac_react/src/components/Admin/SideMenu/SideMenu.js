@@ -29,7 +29,7 @@ function MenuLeft(props){
 
 
                 <Menu.Item as={Link} to={'/admin/documentos'} active={pathname === '/admin/documentos'}>
-                <Icon name='users' />Expedientes
+                <Icon name='file' />Documentos
             </Menu.Item>            
 
             )}
@@ -38,7 +38,7 @@ function MenuLeft(props){
     
 
                 <Menu.Item as={Link} to={'/admin/expedientes'} active={pathname === '/admin/expedientes'}>
-                <Icon name='users' />Expedientes
+                <Icon name='archive' />Expedientes
             </Menu.Item>            
 
             )}

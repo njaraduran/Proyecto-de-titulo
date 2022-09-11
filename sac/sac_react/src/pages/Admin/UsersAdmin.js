@@ -1,21 +1,22 @@
-import { initial } from 'lodash';
 import React ,{useState, useEffect} from 'react';
 import { Loader } from 'semantic-ui-react';
-import { HeaderPage,TableUsers,AddEditUserform } from '../../components/Admin';
+import { HeaderPage,TableUsersAdmin,AddEditUserform } from '../../components/Admin';
 import {ModalBasic} from "../../components/Common";
 import {useUser} from "../../hooks";
+
+
 
 export function UsersAdmin() {
   const [showModal,setShowModal] = useState(false);
   const [titleModal,setTitleModal] = useState(null);
   const [contentModal,setContentModal] = useState(null);
-  const [refetch,setRefech] = useState(false)
+  const [refetch,setRefetch] = useState(false)
   const {loading,users,getUsers,deleteUser} = useUser();
 
   useEffect(() =>  getUsers() , [refetch]);
   
   const openCloseModal =() => setShowModal((prev) => !prev);//sirve para abrir y cerrar popups
-  const onReFetch = () => setRefech((prev)=>!prev);
+  const onReFetch = () => setRefetch((prev)=>!prev);
   
 
   const addUser =()=>{
@@ -56,7 +57,7 @@ export function UsersAdmin() {
           Cargando...
         </Loader>
       ): (
-        <TableUsers 
+        <TableUsersAdmin
           users = {users}
           updateUser = {updateUser}
           onDeleteUser = {onDeleteUser}

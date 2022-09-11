@@ -1,7 +1,7 @@
-import React from 'react'
-import {LoginAdmin} from "../../pages/Admin"
-import {useAuth} from "../../hooks";
+import React from 'react';
+import {LoginAdmin} from "../../pages/Admin";
 import {TopMenu,SideMenu} from "../../components/Admin";
+import {useAuth} from "../../hooks";
 import "./AdminLayout.scss";
 
 export function AdminLayout(props) {

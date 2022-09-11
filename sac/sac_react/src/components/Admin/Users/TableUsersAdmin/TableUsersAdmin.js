@@ -1,9 +1,9 @@
 import React from 'react';
 import { Table,Button,Icon } from 'semantic-ui-react';
 import {map} from "lodash";
-import "./TableUsers.scss"
+import "./TableUsersAdmin.scss"
 
-export function TableUsers(props) {
+export function TableUsersAdmin(props) {
   const {users,updateUser,onDeleteUser} = props;
   return (
     <Table className = "table-users-admin">
@@ -20,6 +20,8 @@ export function TableUsers(props) {
 
       <Table.Body>
         {map(users,(user,index)=>(
+
+          
           <Table.Row key={index}>
             <Table.Cell>{user.username}</Table.Cell>
             <Table.Cell>{user.email}</Table.Cell>

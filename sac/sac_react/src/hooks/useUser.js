@@ -1,6 +1,6 @@
 import {useState} from "react";
 import { getMeApi, getUsersApi,addUserAppi,updateUserApi,deleteUserApi } from "../api/user";
-import {useAuth} from ".";
+import { useAuth } from ".";
 
 export function useUser(){
     const [loading,setLoading] = useState(true);

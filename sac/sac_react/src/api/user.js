@@ -64,6 +64,7 @@ export async function getUsersApi(token){
     }
 }
 
+
 export async function addUserAppi(data,token){
     try {
         const url = `${BASE_API}/api/users/`
@@ -75,6 +76,12 @@ export async function addUserAppi(data,token){
             },
             body: JSON.stringify(data),
         };
+
+        console.log(url)            
+            console.log("---------")            
+            console.log(params)
+
+            
         const response = await fetch(url,params);
         const result = await response.json();
         return result;

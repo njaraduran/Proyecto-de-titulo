@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { map } from "lodash";
 import routes from "./routes";
 
+
 export function Navigation() {
 
-  // console.log('routes -->',routes);
+  console.log('routes -->',routes);
 
   return (
     <BrowserRouter>
@@ -23,6 +24,13 @@ export function Navigation() {
           ))}
       </Routes>
     </BrowserRouter>
+
+    
+    
     
   )
+
+  
 }
+
+

@@ -23,7 +23,7 @@ export function AuthProvider(props) {
                 setAuth(null);
             }
         })();
-    },[setAuth]);
+    },[]);
 
     
     
@@ -51,6 +51,8 @@ export function AuthProvider(props) {
     if (auth ===  undefined) return null;
 
     return(
-        <AuthContext.Provider value={valueContext}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={valueContext}>
+            {children}
+        </AuthContext.Provider>
     );
 }
