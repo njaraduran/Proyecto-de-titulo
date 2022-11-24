@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 import datetime
 from pathlib import Path
 
@@ -40,7 +41,9 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     "corsheaders",
-    'users'
+    'users',
+    'expedientes',
+    'documents'
 ]
 
 MIDDLEWARE = [
@@ -131,6 +134,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+FILE_URL = '/uploads/'
+FILE_ROOT = os.path.join(BASE_DIR, 'uploads')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -143,5 +149,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 SIMPLE_JWT = {
-    'ACCES_TOKE_LIFETIME': datetime.timedelta(days=120)
+    'ACCES_TOKEN_LIFETIME': datetime.timedelta(days=120)
 }

@@ -1,13 +1,14 @@
 import React from 'react'
-import { Button } from "semantic-ui-react";
+// import { Button } from "semantic-ui-react";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {Navigation} from "./routes";
-import {ClientLayout} from "./layouts";
+// import {ClientLayout} from "./layouts";
+import {AuthProvider} from "./context"
 
 export default function App() {
   return (
-    <div>
+    <AuthProvider>
       <Navigation />
 
       <ToastContainer 
@@ -23,6 +24,6 @@ export default function App() {
       />
 
 
-    </div>
+    </AuthProvider>
   );
 }

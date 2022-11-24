@@ -6,7 +6,7 @@ export function LoginAdmin() {
   return (
     <div className='login-admin'>
       <div className='login-admin__content'>
-        <h1>Entrar al panel</h1>
+        <h1>Sistema de Admnistración de Contratos</h1>
         <LoginForm />
       </div>
     </div>

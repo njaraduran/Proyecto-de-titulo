@@ -1,5 +1,5 @@
 import { ClientLayout } from "../layouts";
-import { Error404 } from "../pages";
+// import { Error404 } from "../pages";
 import {Home} from "../pages/Client";
 
 

@@ -1,6 +1,6 @@
+// import { escapeRegExp } from "lodash";
 import {AdminLayout} from "../layouts";
-import {LoginAdmin} from "../pages/Admin";
-import { HomeAdmin}from "../pages/Admin";
+import { HomeAdmin,UsersAdmin,ExpedientesAdmin}from "../pages/Admin";
 
 const routesAdmin = [
     {
@@ -9,6 +9,18 @@ const routesAdmin = [
         component: HomeAdmin,
         exact: true
     },
+    {
+        path: "/admin/users",
+        layout: AdminLayout,
+        component: UsersAdmin,
+        exact: true
+    },
+    {
+        path: "/admin/expedientes",
+        layout: AdminLayout,
+        component: ExpedientesAdmin,
+        exact: true
+    }
 
 
 ]
